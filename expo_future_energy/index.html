@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>EXPO Future Energy — Astana</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+</head>
+<body>
+  <div id="loading" class="screen"><div class="loader"></div><p>LOADING ASTANA FUTURE ENERGY WORLD</p></div>
+  <section id="intro" class="overlay">
+    <div class="intro-card">
+      <div class="eyebrow">ASTANA · FUTURE ENERGY WORLD</div>
+      <h1>EXPO <span>FUTURE ENERGY</span></h1>
+      <p>Rogue energy robots have invaded Astana. Explore the city, defend yourself with a magic wand, and find shelter inside NUR ALEM — the Museum of Future Energy. Defeat 10 robots to save the city.</p>
+      <div class="instructions"><span>W A S D</span> MOVE <span>MOUSE</span> LOOK <span>SPACE / LEFT CLICK</span> CAST SPELL</div>
+      <button id="start">START MISSION <b>↗</b></button>
+    </div>
+  </section>
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="brand">EXPO <small>ASTANA / FUTURE ENERGY</small></div>
+      <div class="stats">
+        <span>✦ <b id="robot-count">0</b> / 10 ROBOTS</span>
+        <span>♥ <b id="life-count">3</b> LIVES <i id="life-icons">♥ ♥ ♥</i></span>
+        <span>⌖ <b id="exhibit-count">0</b> / 4 EXHIBITS</span>
+      </div>
+    </div>
+    <div id="mission"><small>YOUR MISSION</small><strong id="mission-text">Defeat 10 robots to secure Astana.</strong></div>
+    <div id="hint">Aim at a robot and press SPACE or LEFT MOUSE to cast a spell.</div>
+    <div class="controls">
+      <button id="enter">ENTER NUR ALEM</button>
+      <button id="sound">SOUND: ON</button>
+    </div>
+    <div id="crosshair">+</div>
+  </div>
+  <div id="inside-panel" class="hidden">
+    <div class="panel-head"><div><small>SAFE ZONE · NUR ALEM</small><h2>Museum of Future Energy</h2></div><button id="leave">EXIT TO CITY ×</button></div>
+    <p>Robots cannot reach you inside the sphere. Your lives have been restored. Walk up to an exhibit or select it below to learn how the technology works.</p>
+    <div class="exhibit-list" id="exhibit-list"></div>
+  </div>
+  <div id="info-modal" class="hidden">
+    <div class="info-card"><button id="close-info" class="close">×</button><small id="info-category">ENERGY EXHIBIT</small><h2 id="info-title"></h2><p id="info-description"></p><div class="fact" id="info-fact"></div><button id="listen">▶ LISTEN TO EXPLANATION</button></div>
+  </div>
+  <div id="end-screen" class="hidden">
+    <div class="info-card end-card"><small>EXPO FUTURE ENERGY · ASTANA</small><h2 id="end-title">MISSION COMPLETE</h2><p id="end-copy"></p><div class="fact" id="end-stats"></div><button id="recover" class="hidden">RETURN TO SAFE ZONE</button><button id="restart-end">PLAY AGAIN</button></div>
+  </div>
+  <div id="toast" class="hidden"></div>
+  <a-scene id="scene" embedded renderer="antialias: true; colorManagement: true" shadow="type: pcfsoft" background="color: #9bb8c7" vr-mode-ui="enabled: true" loading-screen="enabled: false">
+    <a-entity id="world"></a-entity>
+    <a-entity id="player" position="0 1.65 28">
+      <a-camera id="camera" look-controls position="0 0 0" far="180" fov="78" raycaster="objects: .robot, .exhibit; far: 40; interval: 30">
+        <a-cursor color="#d9f7ff" fuse="false" raycaster="objects: .robot, .exhibit; far: 40" material="shader: flat; opacity: .8" geometry="primitive: ring; radiusInner: .008; radiusOuter: .013"></a-cursor>
+        <a-entity id="wand-model" position=".34 -.28 -.55" rotation="-12 0 -8">
+          <a-cylinder position="0 0 -.18" radius=".035" height=".55" rotation="90 0 0" material="color:#8b633c;metalness:.55;roughness:.3"></a-cylinder>
+          <a-sphere position="0 0 -.48" radius=".095" material="color:#f6d78e;emissive:#f6c85e;emissiveIntensity:1.2"></a-sphere>
+          <a-torus position="0 0 -.48" radius=".13" radius-tubular=".018" material="color:#a9eaff;emissive:#76dfff;emissiveIntensity:.8"></a-torus>
+        </a-entity>
+      </a-camera>
+    </a-entity>
+    <a-sky color="#a9c2cf"></a-sky>
+    <a-light type="ambient" color="#dce8ef" intensity="1.05"></a-light>
+    <a-light type="directional" position="-25 35 15" intensity="1.35" cast-shadow="true"></a-light>
+  </a-scene>
+  <script src="game.js"></script>
+</body>
+</html>
