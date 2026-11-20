@@ -28,8 +28,6 @@ An A-Frame browser game about defending Astana and exploring the NUR ALEM Museum
    python -m http.server 8000
    ```
 
-4. Open <http://localhost:8000> in a browser.
-
 The project loads A-Frame 1.5.0 from its public CDN, so an internet connection is required when opening the game for the first time.
 
 ## Project files
